@@ -18,7 +18,7 @@ skills/<name>/
   references/    optional, for what a run looks up rather than needs
 ```
 
-The five skills form one workflow and share a prefix: `ux-context` → `ux-flow` → screen → `ux-text` → `ux-pattern` → `ux-check`. The screen step is deliberately not a skill here; every setup builds screens differently, and a skill that names one tool would be wrong for the others.
+The skills form one workflow and share a prefix: `ux-flow` → screen → `ux-text`. The screen step is deliberately not a skill here; every setup builds screens differently, and a skill that names one tool would be wrong for the others.
 
 ## SKILL.md format
 
@@ -122,7 +122,7 @@ A skill is a procedure with a trigger: someone wants something, the agent works,
 | Kind | Where it goes |
 |------|---------------|
 | Checklist, catalogue, worked example | `references/` inside the skill that uses it |
-| A pattern for a specific product | that product's own library, written with `ux-pattern` |
+| A pattern for a specific product | that product's own library |
 | A stock of generic patterns | nowhere. Patterns come from gaps found in real work |
 
 The test: if the answer to "what does the agent do here" is "it hands you the text", it is not a skill.
@@ -131,9 +131,10 @@ The test: if the answer to "what does the agent do here" is "it hands you the te
 
 1. **Technically precise.** No exaggerations, no invented capabilities, no misquoted standard levels.
 2. **Self-contained.** Each skill is understandable without the others. Dependencies are named in **Needs**, not assumed.
-3. **Consistent vocabulary.** Context brief, routine (rare, occasional, daily), one thing per step, state catalogue, dead end, pattern status "to test" or "decided", finding (criterion, location, what happens, severity, fix) mean the same thing everywhere.
+3. **Consistent vocabulary.** Context brief, routine (rare, occasional, daily), one thing per step, state catalogue, dead end, glossary, replacement table mean the same thing everywhere.
 4. **Markdown is master.** Everything else is derived from it.
-5. **A change needs a run.** A skill changes because a run showed a gap, not because a rule sounded nicer. Say in the commit which run.
+5. **A change needs a run.** A skill changes because a run showed a gap, not because a rule sounded nicer. Say in the commit which run, and record the result in `evals/`.
+6. **The result carries no process.** A skill's output is read by developers and clients, not by the next skill. No skill names, no "next, run X", no explanation of rules that did not apply. Assumptions stay, marked as such.
 
 ---
 

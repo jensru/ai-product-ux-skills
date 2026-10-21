@@ -1,6 +1,6 @@
 # AI Product UX Skills
 
-**Skills for product and UX work in software that already exists.** Five skills, one workflow: pin down the task, design the steps and states, write the interface text, turn recurring answers into patterns, check the result against WCAG and a named heuristic set.
+**Skills for product and UX work in software that already exists.** Two skills, one workflow: design the steps and states of a task, then write the interface text for every one of those states.
 
 Each skill is a folder with a `SKILL.md` that says what it is for, what it needs, what it produces, and how it is run. An agent such as Claude Code picks the skill by its description and does the work; the person decides.
 
@@ -11,34 +11,28 @@ by Jens Rusitschka, [kick & boost](https://kickboost.io/)
 ## The workflow
 
 ```
-ux-context  →  ux-flow  →  screen  →  ux-text  →  ux-pattern  →  ux-check
+ux-flow  →  screen  →  ux-text
 ```
 
 | Step | Skill | Produces |
 |---|---|---|
-| Understand the task | [ux-context](skills/ux-context/) | A context brief of half a page: task in the user's words, trigger, routine (rare, occasional, daily), user group, an observable success criterion, today's workaround, open assumptions |
-| Design the steps | [ux-flow](skills/ux-flow/) | A step table written as state changes, one thing per step, a state catalogue per view (empty, loading, partial, error, no permission, success), a dead-end list |
+| Design the steps | [ux-flow](skills/ux-flow/) | The task in six lines, a step table written as state changes, the decisions the brief forces (keyboard path, conflicts between users, where a workaround's data goes), a state catalogue per view (empty, loading, partial, error, no permission, success), a dead-end list |
 | Build the screen | your own screen step | This collection does not build screens. Use whatever does that in your setup |
-| Write the text | [ux-text](skills/ux-text/) | Labels, buttons, hints, error messages with an error summary, empty states, per element and state, plus a glossary and one line of reasoning per change. With rules for German interfaces |
-| Fix it for every screen | [ux-pattern](skills/ux-pattern/) | One pattern file in the project's library, with source, states, accessibility, text and a status of "to test" or "decided" |
-| Check the result | [ux-check](skills/ux-check/) | One report: WCAG 2.1 AA pass, a usability pass against ISO 9241-110:2020 or Nielsen's heuristics, optional visual critique, findings ranked by severity with criterion, location and fix |
+| Write the text | [ux-text](skills/ux-text/) | A handover developers can work down: assumptions, voice, a binding glossary, a replacement table with IDs and variables per element and state, the behaviour the text depends on, message patterns. With rules for German interfaces |
 
-Nothing has to run in order. Every skill checks for its one precondition, says what it is building on, and offers to run the skill before it when the input is missing. A skill that is told to go ahead anyway does, and writes its assumptions into the result.
+Nothing has to run in order. Each skill checks for its one precondition and says what it is building on. When the input is missing, `ux-flow` writes the task down itself and marks what is assumed; `ux-text` derives the states from the screen and lists the ones it assumed.
 
 ## Which skill do I need?
 
 | Situation | Skill |
 |---|---|
-| A ticket names a feature, nobody wrote down the task | [ux-context](skills/ux-context/) |
-| The same screen gets redesigned twice because nobody agreed what it is for | [ux-context](skills/ux-context/) |
 | A form or process has to be cut into steps | [ux-flow](skills/ux-flow/) |
+| A ticket names a feature, nobody wrote down the task | [ux-flow](skills/ux-flow/) |
 | Users get stuck and nobody can say in which state | [ux-flow](skills/ux-flow/) |
 | The build only knows "loading, data, error" | [ux-flow](skills/ux-flow/) |
 | Errors say "invalid input", empty states say "No data" | [ux-text](skills/ux-text/) |
+| The same thing has three names across screens | [ux-text](skills/ux-text/) |
 | A German interface reads like a translation | [ux-text](skills/ux-text/) |
-| The library has no answer, every screen improvises | [ux-pattern](skills/ux-pattern/) |
-| A review finding keeps coming back on new screens | [ux-pattern](skills/ux-pattern/) |
-| Is this accessible and usable, before handoff or for a tender | [ux-check](skills/ux-check/) |
 
 ## What the skills are built on
 
@@ -48,8 +42,6 @@ The skills do not invent design rules. They lean on two bodies of published, tes
 - **[Material Design 3](https://m3.material.io/)** and Android's navigation principles for movement and state: interaction states, undo after the fact, empty states, content design. Built for tools people use often.
 
 The skills read both through one lens: **how often the user does this task**. Rare tasks get guidance, daily tasks get speed and density. Getting that wrong produces a screen that is correct and still wrong.
-
-Accessibility is checked against **WCAG 2.1 level AA**, the level EN 301 549 and most European accessibility laws point to. WCAG 2.2 additions are listed as an optional block.
 
 ## Install
 
@@ -74,19 +66,15 @@ for s in ai-product-ux-skills/skills/ux-*; do ln -s "$PWD/$s" ~/.claude/skills/;
 README.md             This file
 AGENTS.md             Conventions for writing and changing skills
 LICENSE               CC BY 4.0
+evals/README.md       How the skills were tested and what the runs showed
 skills/
-  ux-context/SKILL.md
   ux-flow/SKILL.md
   ux-text/SKILL.md
-  ux-pattern/SKILL.md
-  ux-check/SKILL.md
-  ux-check/references/wcag-21-aa.md    All WCAG 2.1 A and AA criteria as a checklist
-  ux-check/references/heuristics.md    ISO 9241-110:2020 and Nielsen, one line each
 ```
 
 ## Status
 
-First public release, September 2026. The five skills were written from method, published guidance and earlier private skills, and none of them has been run end to end on a real product yet. Expect the wording of triggers and the step tables to change once they have. What is deliberately missing: a library of ready-made patterns. `ux-pattern` describes how a pattern is written when a gap shows up in real work, not a stock of patterns written on speculation.
+October 2026. Both skills were tested blind against their previous versions on two invented cases from different domains (a dispatch tool used all day by experts, and an expense form used occasionally on the phone). The current versions were rated better in both cases: `ux-flow` mainly through complete states and decisions instead of open options, `ux-text` through a handover developers can apply directly. Neither has been run on a real product yet. Method, scores and what still goes wrong: [evals](evals/README.md).
 
 Contributions: open an issue with the situation the skill got wrong. A skill changes because a run showed a gap, not because a rule sounded nicer.
 
