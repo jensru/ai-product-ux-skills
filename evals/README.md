@@ -14,7 +14,7 @@ How the skills were tested, what the runs showed, and what still goes wrong. A s
 - The dispatch case was used to sharpen the skills. The expense case was written before the changes and not looked at while changing them; it is the holdout.
 - Each case has a deliberately flawed screen with a list of planted problems (24 and 29 items), used as the answer key for text and review tasks.
 - Every run is a fresh agent with only the input files and, depending on the condition, one skill. No human answers questions during the run.
-- Results are anonymised and judged **blind** by a separate agent per case, on five criteria scored 1 to 5 (25 maximum), with length explicitly not counted as merit.
+- Results are anonymised and judged **blind** by a separate agent, with length explicitly not counted as merit. Rounds 1 and 2: one judge per case, five criteria scored 1 to 5 (25 maximum). Round 3: two judges per case, six criteria (30 maximum), the sixth being whether the result could sit unchanged in another product.
 
 ## ux-flow
 
@@ -49,7 +49,7 @@ As documents, the second version scored slightly higher: judges rewarded its tec
 
 - The current concept thinks from the goal: it takes the trip over from the travel request, reads amount and date from receipt photos so the user only confirms, and shows a running total from the first step as proof that the product calculates. None of this was asked for; it follows from "every step has a visible effect, fast to the goal". The second version had no receipt reading.
 - A completeness check before submitting catches exactly the gaps for which a third of claims were sent back.
-- Lighter acknowledgement: the change itself confirms the step ("the order moving into the technician's day is the acknowledgement"), not a toast.
+- Lighter acknowledgement: the change itself confirms the step, not a toast. From the dispatch flow: "the order moving into the technician's day is the acknowledgement".
 
 **What still goes wrong**
 
@@ -79,7 +79,7 @@ The first version of `ux-text` scored below running without a skill. The current
 
 **What went wrong before, and is fixed**
 
-- The first version renamed terms users already use ("Techniker" to "Zuständig") in the name of inclusive language. The rule now keeps existing role and domain names.
+- The first version renamed terms users already use ("technician" to "person responsible", in a German interface) in the name of inclusive language. The rule now keeps existing role and domain names.
 - It wrote strings with example data, spread over prose sections, and explained GOV.UK rules that did not apply.
 
 **What still goes wrong**

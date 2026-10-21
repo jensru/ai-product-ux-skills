@@ -17,7 +17,7 @@ Category: **Flow**
 
 ## Before you start
 
-Look for the states each view can be in: empty, loading, error, success, partial, no permission, conflict. They usually come from `ux-flow`.
+Look for the states each view can be in: empty, loading, error, success, partial, no permission, conflict. They usually come from `ux-flow`, in the during and after of each step and in its ways out.
 
 Found them: write text for every state, not just the happy one, and say in one line what you are building on.
 Not found: derive them from the screen and its behaviour, and list the ones you assumed in the assumptions table, so the missing ones are visible.

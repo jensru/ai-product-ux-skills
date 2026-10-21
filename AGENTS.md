@@ -57,7 +57,7 @@ It holds what a run **looks up**, not what a run **needs**:
 | Some runs | `references/`: checklists, catalogues, a worked example |
 | No run | Out |
 
-An agent reads the skill and acts, so a second file is usually a second read on text it needed anyway. A reference earns its place when it is long, looked up rather than read (the WCAG checklist), and would bury the procedure if inlined.
+An agent reads the skill and acts, so a second file is usually a second read on text it needed anyway. A reference earns its place when it is long, looked up rather than read (a standards checklist), and would bury the procedure if inlined.
 
 ## Every skill checks its one precondition
 
@@ -91,15 +91,15 @@ This exists because it was learned the expensive way: a skill was run eight time
 
 ## Sources are linked, not copied
 
-The skills build on the GOV.UK Design System, the GOV.UK Service Manual, Material Design and the WAI-ARIA Authoring Practices. Describe what is taken and link it. Do not paste their text: the copy ages, the source moves on, and the licence of the source is not ours to relicense. Where a skill departs from a source, it says how and why.
+The skills build on Krystal Higgins' *Better Onboarding*, the GOV.UK Design System and Service Manual, Material Design, and Nielsen's heuristics or ISO 9241-110. Describe what is taken and link it. Do not paste their text: the copy ages, the source moves on, and the licence of the source is not ours to relicense. Where a skill departs from a source, it says how and why.
 
-Reference files that summarise a standard (WCAG, ISO 9241-110, Nielsen) are short paraphrases written for working, marked as such, with the source named. Every external link is checked before it is committed.
+Reference files that summarise a standard are short paraphrases written for working, marked as such, with the source named. Every external link is checked before it is committed.
 
-Accessibility target is **WCAG 2.1 level AA**. Levels are stated correctly (2.5.5 Target Size is AAA; 2.5.8 is AA and only in 2.2). WCAG 2.2 additions go in a separate, clearly marked block.
+Where a skill states accessibility requirements, the target is **WCAG 2.1 level AA**, with levels stated correctly (2.5.5 Target Size is AAA; 2.5.8 is AA and only in 2.2).
 
 ## This repo is public
 
-- No client names, product names or project details. Examples are generic; the recurring one is recruiting (an applicant list, a shortlist), chosen because everyone understands it.
+- No client names, product names or project details. Examples are generic and invented (recruiting, an insurance claim), chosen because everyone understands them.
 - No personal data, no local paths, no internal tool names.
 - Nothing that was taken from a third party without its licence allowing it and a note saying so.
 
@@ -131,7 +131,7 @@ The test: if the answer to "what does the agent do here" is "it hands you the te
 
 1. **Technically precise.** No exaggerations, no invented capabilities, no misquoted standard levels.
 2. **Self-contained.** Each skill is understandable without the others. Dependencies are named in **Needs**, not assumed.
-3. **Consistent vocabulary.** Context brief, routine (rare, occasional, daily), one thing per step, state catalogue, dead end, glossary, replacement table mean the same thing everywhere.
+3. **Consistent vocabulary.** Concept, goal, aha, before / during / after, acknowledgement, way out, routine (rare, occasional, daily), glossary, replacement table, build plan, deviation mean the same thing everywhere.
 4. **Markdown is master.** Everything else is derived from it.
 5. **A change needs a run.** A skill changes because a run showed a gap, not because a rule sounded nicer. Say in the commit which run, and record the result in `evals/`.
 6. **The result carries no process.** A skill's output is read by developers and clients, not by the next skill. No skill names, no "next, run X", no explanation of rules that did not apply. Assumptions stay, marked as such.
