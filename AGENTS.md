@@ -18,7 +18,7 @@ skills/<name>/
   references/    optional, for what a run looks up rather than needs
 ```
 
-The skills form one workflow and share a prefix: `ux-flow` → screen → `ux-text`. The screen step is deliberately not a skill here; every setup builds screens differently, and a skill that names one tool would be wrong for the others.
+The skills form one workflow in three roles and share a prefix: concept (`ux-flow` → `ux-text`), build (`ux-build-plan` → build), check (`ux-validate`). The concept skills carry no technical detail; translating the concept into technology is the build plan's job. Building the screens is deliberately not a skill here; every setup builds them differently, and a skill that names one tool would be wrong for the others.
 
 ## SKILL.md format
 

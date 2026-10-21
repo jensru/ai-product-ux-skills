@@ -13,7 +13,7 @@ Category: **Flow**
 | **Skip when** | The text is clear and the brand wants a distinct personality or marketing voice: a voice skill (separate, not in this collection). The problem is the order or number of steps, not their wording: `ux-flow` |
 | **Needs** | The screens or the flow, with the states each view can be in, and who uses it how often |
 | **Produces** | A text handover: assumptions, voice in three lines, binding glossary, replacement table per element and state, behaviour the text depends on, message patterns |
-| **Then** | Build, then a UX and accessibility review (separate, not in this collection) |
+| **Then** | `ux-build-plan` when someone else builds it, otherwise build directly |
 
 ## Before you start
 
@@ -102,4 +102,4 @@ It does not give the product a brand voice or personality. It does not restructu
 
 ## Where it sits
 
-`ux-flow` → screen → **`ux-text`** → review
+`ux-flow` → **`ux-text`** → `ux-build-plan` → build → `ux-validate`

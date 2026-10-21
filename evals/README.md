@@ -18,22 +18,47 @@ How the skills were tested, what the runs showed, and what still goes wrong. A s
 
 ## ux-flow
 
-| Round | Case | Without skill | Previous skill | Current skill |
-|---|---|---|---|---|
-| 1 | Dispatch | 20 | 22 (first version) | |
-| 2 | Dispatch | | 17 (first version) | **22** |
-| 2 | Expense claim (holdout) | | 19 (first version) | **21** |
+Three versions so far. The first was built on GOV.UK and Material as the main source. The second added a checklist of decisions the brief forces (keyboard path, conflicts between users, where a spreadsheet's data goes). The current third version is the author's own method: every flow is an onboarding to the user's goal, each step written as before, during and after, acknowledged as lightly as possible, never answered from a menu of patterns.
+
+**Flow documents, judged blind** (25 points in rounds 1 and 2, 30 in round 3 with "could this flow sit unchanged in another product?" added as a criterion; round 3 had two judges per case and two runs of the current version):
+
+| Round | Case | Without skill | First | Second | Current |
+|---|---|---|---|---|---|
+| 1 | Dispatch | 20 | 22 | | |
+| 2 | Dispatch | | 17 | 22 | |
+| 2 | Expense claim (holdout) | | 19 | 21 | |
+| 3 | Dispatch | | | 27 / 26 | 25 / 24 and 26 / 26 |
+| 3 | Expense claim (holdout) | | | 27 / 26 | 25 / 25 and 23 / 21 |
+
+As documents, the second version scored slightly higher: judges rewarded its technical decisions. The current version scored higher on guidance to the goal and on proportion, lower on "could a developer start without a meeting". That criterion turned out to be the wrong one for a concept: technical detail is the build plan's job, not the concept's (see below).
+
+**Built into prototypes** (expense claim, same brief, same old form, same build constraints, judged blind on six criteria, 30 points):
+
+| | Current ux-flow, ux-text, ux-build-plan | Second ux-flow, ux-text | Without skill |
+|---|---|---|---|
+| Task in five minutes on a phone | **5** | 3 | 4 |
+| Way to the goal and the moment it pays off | **5** | 3 | 4 |
+| States and errors | **5** | **5** | 4 |
+| Text | 4 | 4 | 4 |
+| Proportion (too much counts against) | 3 | 2 | **4** |
+| Product-specific | **5** | 4 | 3 |
+| **Total** | **27** | 21 | 23 |
+| Agent time, all steps | about 22 min | about 35 min | about 10 min |
 
 **What works**
 
-- A real state catalogue per view (empty first use, no results, loading, partial, errors, no permission, success). Without the skill, loading, no-permission and initial load errors were missing.
-- Decisions instead of requirements: a keyboard model with actual keys, a conditional write against double assignment, undo timings in seconds, where each column of the spreadsheet workaround lives inside the flow. Judges said developers "could start" with the current version and would "hold a session" to decide the same points with the first one.
-- The routine logic holds across both cases: dense board, bulk actions and undo for the daily tool; one question per step, inferred master data and a check page for the occasional form.
+- The current concept thinks from the goal: it takes the trip over from the travel request, reads amount and date from receipt photos so the user only confirms, and shows a running total from the first step as proof that the product calculates. None of this was asked for; it follows from "every step has a visible effect, fast to the goal". The second version had no receipt reading.
+- A completeness check before submitting catches exactly the gaps for which a third of claims were sent back.
+- Lighter acknowledgement: the change itself confirms the step ("the order moving into the technician's day is the acknowledgement"), not a toast.
 
 **What still goes wrong**
 
-- On the holdout, one run grounded parts of its argument in an existing form that was not in the brief. Assumptions about the current system need marking like any other assumption.
-- Results are long (180 to 300 lines). Judges did not penalise this where the lines carried decisions, but a shorter handover would be easier to review.
+- The current version still overbuilds in breadth (mileage, collecting receipts during the trip, notifications), though less than the second version, which had over a hundred states.
+- Two runs of the same version on the same case differed by two to four points: the skill's output varies more than the judging does.
+
+## ux-build-plan and ux-validate
+
+New in round 3, tested once in the end-to-end run above. The build plan traced every item to a concept step, marked what it added, and sent four questions back to the concept instead of quietly changing it. The validation found that plan and prototype delivered the concept almost completely, and named the first fix: the running total was missing on the camera and check screens, so the payoff moment came one receipt late.
 
 ## ux-text
 
@@ -64,11 +89,19 @@ The first version of `ux-text` scored below running without a skill. The current
 
 ## What was not kept
 
-Three more skills were written and tested in the first round and taken out of this collection: a context brief skill (barely better than no skill; its task lines now open `ux-flow`), a pattern skill (level with no skill), and a combined accessibility and usability review (strong on correct WCAG levels, but splitting it into two reports made the result worse, so it needs more work before it is published).
+Three more skills were written and tested in the first round and taken out of this collection: a context brief skill (barely better than no skill; the user's goal and trigger now open `ux-flow`), a pattern skill (level with no skill), and a combined accessibility and usability review (strong on correct WCAG levels, but splitting it into two reports made the result worse, so it needs more work before it is published).
+
+## Further testing needed
+
+- **What ux-text adds to a build.** In the prototypes, ux-text always ran together with ux-flow, and all three prototypes got the same text score. It has been tested on its own as a text task, not isolated inside a build. Next: the same concept built once with and once without the text handover.
+- **With a design system.** Every prototype so far was built from scratch in plain HTML. With an existing design system the build plan maps concept steps to existing components, which should cut build time; whether quality holds is unmeasured.
+- **Method or hand-over.** In the end-to-end run, the new concept method and the separate build plan were new at the same time. The receipt reading and the running total come from the concept; the restraint in the build probably comes from the build plan's "nothing extra" rule. The two effects were not separated.
+- **Separate agents.** The roles were run as separate agents with only their inputs. What happens when one agent runs all four skills in one context is untested.
+- **More runs, more cases, a real product.** One end-to-end run, two invented cases, no real product.
 
 ## Limits
 
-One run per condition and one judge per case. The same text by the first `ux-flow` scored 22 with one judge and 17 with another, so differences of three to five points can be noise. Only results that point the same way on both cases are treated as findings here. Neither skill has been run on a real product yet.
+Mostly one run per condition. The same text by the first `ux-flow` scored 22 with one judge and 17 with another; in round 3 two judges on the same text stayed within two points of each other, but two runs of the same skill differed by up to four. Only results that point the same way on both cases are treated as findings here. Judges are agents from the same model family as the skills' users, which tends to reward completeness; the product-specific criterion was added in round 3 to counter that.
 
 ---
 

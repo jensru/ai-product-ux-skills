@@ -1,6 +1,6 @@
 ---
 name: ux-flow
-description: Turn a task into a click path written as a sequence of states, one thing per step, with every state a screen can be in (empty, loading, error, success, partial) and a way out of each. Use when a task in working software needs its steps designed before screens are built, when a form or process has to be split into steps, when users get stuck and nobody can say in which state, or when a build only knows "loading, data, error".
+description: Design a flow as a guided path to the user's goal - every step actionable, with visible impact, clear about why it matters now and what it teaches - written per step as before, during and after, acknowledged as lightly as the change allows. Use when a task, form or feature needs its steps designed before screens are built, when users drop out and nobody can say where, when a flow is a stack of form windows, or when every action answers with a toast.
 ---
 
 # UX Flow
@@ -9,126 +9,91 @@ Category: **Flow**
 
 |  |  |
 |---|---|
-| **Use when** | A task in existing or business software needs its steps designed · a long form or process has to be cut into steps · users get stuck and nobody can say where · the implementation only models `loading`, `data` and `error` |
-| **Skip when** | An onboarding or activation flow for a new product, built around one peak moment: a different job (`user-flow`, separate, not in this collection). The flow exists and needs judging, not designing: a UX and accessibility review (separate, not in this collection) |
-| **Needs** | The task: who does what, how often, triggered by what, and what counts as done. A ticket, a brief or interview notes |
-| **Produces** | A step table with entry state, action, system reaction and exit per step, a state catalogue per view, a dead-end list, and the decisions the brief forces |
+| **Use when** | A task, form or feature needs its steps designed · users drop out and nobody can say where · the flow is a stack of form windows · every action answers with a toast or a dialog |
+| **Skip when** | The steps are right and only the wording is weak: `ux-text`. The flow exists and needs judging, not designing: a review (separate, not in this collection) |
+| **Needs** | The user's goal and what brings them here: a ticket, a brief, interview notes |
+| **Produces** | The goal and its aha, a step table with why, before, during, after and acknowledgement per step, and the ways out |
 | **Then** | Build the screens (your own screen step), then `ux-text` |
 
 ## Before you start
 
-Look for the task: task in the user's words, trigger, routine (rare, occasional, daily), user group, success criterion, today's workaround.
+Look for the user's goal: what they want to have at the end, in their words, and what happened just before they came.
 
 Found it: build on it and say in one line what you are building on.
-Not found, or only a feature request ("add a filter"): write those six lines yourself at the top of the flow, from whatever evidence exists, and mark every line that is not observed with **(assumed)**. A flow built on a feature request designs the feature, not the task.
+Not found, or only a feature request ("add a filter"): write the goal and the trigger yourself at the top, marked **(assumed)**. A flow without a goal leads nowhere in particular, and every step after that inherits it.
 
-The routine matters most. A flow for someone who does this once a year and a flow for someone who does it forty times a day are different flows, even when the data is the same.
+## Every flow is an onboarding
 
-## The logic this skill follows
+Onboarding has one rule that holds for every flow: lead the user to their goal as fast as possible, and let them reach the moment where it pays off (the aha) inside the flow, not after it.
 
-Two bodies of published, tested guidance, used for what each does best.
+So every step has to:
 
-**GOV.UK** for the structure of a task. [Do the hard work to make it simple](https://www.gov.uk/guidance/government-design-principles) is the fourth UK government design principle, and the Service Standard asks teams to [solve a whole problem for users](https://www.gov.uk/service-manual/service-standard), not the part that happens to sit in one system. For forms the service manual recommends [starting with one thing per page](https://www.gov.uk/service-manual/design/form-structure) and asking only what the service really needs. The Design System turns that into patterns: [question pages](https://design-system.service.gov.uk/patterns/question-pages/), [check answers](https://design-system.service.gov.uk/patterns/check-answers/), [confirmation pages](https://design-system.service.gov.uk/patterns/confirmation-pages/), [complete multiple tasks](https://design-system.service.gov.uk/patterns/complete-multiple-tasks/).
+- **be actionable**: the user does something, not reads something
+- **have impact**: something visibly changes because of it
+- **say why it matters now**, on the way to the goal
+- **teach how the product works**, by doing it, not by explaining it
+- **make the user want to do it**: they understand what this step gets them
 
-**Android and Material** for movement and state. Android's [principles of navigation](https://developer.android.com/guide/navigation/principles) say that Back returns to the previous state and a deep link lands with a sensible back stack. Material documents [interaction states](https://m3.material.io/foundations/interaction/states/overview) and offers undo after the fact through a [snackbar](https://m3.material.io/components/snackbar/overview) rather than a confirmation before it.
+A step that cannot say what it gets the user is a step to cut or merge.
 
-Neither is a style to copy. Both are evidence about what works, and a flow that departs from them should be able to say why.
+## Before, during, after
 
-## One thing per step, read correctly
+Every step, down to each micro-interaction, has three moments. The structure follows Krystal Higgins, [Better Onboarding](https://abookapart.com/products/better-onboarding).
 
-"One thing per page" means one decision, one question or one piece of work per step, so the user never has to hold two in their head. It does not mean one field per page in a tool used all day.
-
-| Routine | What one thing per step becomes |
+| Moment | What the user gets |
 |---|---|
-| Rare | Literally one question per page, check answers before commit, a confirmation page after |
-| Occasional | One decision per screen or section, with the rest collapsed until it is needed |
-| Daily | One decision per interaction on a dense screen: selecting, acting and seeing the result without leaving the list. The step is the action, not the page |
+| **Before** | What this step will bring them. What they need ready for it (documents, numbers, a photo, a decision) and how to prepare |
+| **During** | Help to finish it correctly. A way to fix errors without losing work. More information for those who want it, out of the way for those who do not |
+| **After** | That it worked. What changed. What they can do next, because of this step |
 
-The test is the same for all three: can you name the one thing this step asks of the user? If the answer has an "and" in it, the step is two steps.
+The after-moment is where flows usually go quiet. "Saved" answers whether the system wrote, not whether the user is further.
 
-## Procedure
+## Acknowledge, don't announce
 
-**1. Fix the ends.** Start state from the trigger in the brief, end state from the success criterion. "Forty new applications, none reviewed" to "five marked for a call, the rest sorted". If the end state is "the user has seen the page", the flow has no end.
+Not every step needs a message. Material distinguishes [confirmation and acknowledgement](https://m2.material.io/design/communication/confirmation-acknowledgement.html): confirm before an action only when it cannot be undone, and acknowledge after an action in the lightest form that makes the change clear.
 
-**2. List what the system needs.** Every piece of information and every decision the task requires. For each one ask why it is needed, and whether the system could know it already. GOV.UK calls this a question protocol. Whatever the system can infer, it infers and shows for confirmation. That is the hard work that makes it simple.
+- The change itself is often the acknowledgement: the item moves, the counter goes up, the next step opens.
+- A toast or message only where the change happens somewhere the user cannot see.
+- Undo afterwards instead of "are you sure" beforehand.
+- A micro-animation can show what was just done and where the next step is. One movement that carries meaning, not decoration.
 
-**3. Cut into steps**, one thing each, in the order the user thinks about the task, not the order the database stores it. Put the question that can end the task early (not eligible, not allowed, nothing to do) first.
+Every extra toast and message makes the interface heavier.
 
-**4. Write each step as a state change:**
+## Never a menu
 
-| Field | Rule |
-|---|---|
-| Entry state | What is true when the user arrives, including how they got here |
-| The one thing | The decision, question or action this step asks for |
-| System reaction | What the system does, concretely. "Saves the draft and moves the applicant to Shortlist" |
-| Exit | Where the user goes next, and where Back goes. Back never loses entered data |
-| Failure | What happens when it goes wrong, and what the user does then |
+Do not answer the three moments by picking from a list (an undo chip here, a tooltip there, a success animation). Anything picked from a menu is the average interaction, and generated flows across unrelated products end up looking the same. The answer comes out of this product's situation:
 
-Describe actions on components ("selects three rows, chooses Move to shortlist"), never layouts. Layout is the screen step's job.
+> *From the menu:* undo chip for five seconds, success animation, next step as a primary button.
+> *From the product:* the case now sits where cases will always sit, and assigning an assessor waits beside it as the next target.
 
-**5. Put the commit where it can be checked.** Anything irreversible or costly gets either a check step before it (GOV.UK check answers) or undo after it (Material snackbar). Prefer undo for anything that can be undone. A confirmation dialog before a reversible action trains people to click through dialogs.
+Build modern interactions where they shorten the step (the system fills in what it already knows, inline editing, autosave with undo, a photo instead of typing), not a sequence of form windows. The concept knows what technology makes possible and proposes it as variants where it helps (AI suggestions, image upload, a chat), but describes only what the user experiences. Data, services and the build itself are translated afterwards (`ux-build-plan`).
 
-**6. Write the state catalogue** for every view in the flow. See below.
+## Each step makes sense
 
-**7. Sweep for dead ends.** Walk every state and ask: can the user go forward, can they go back, and do they know which of the two they should do? A state with no answer to one of these is a dead end.
+From the GOV.UK [form structure](https://www.gov.uk/service-manual/design/form-structure) guidance and its [question pages](https://design-system.service.gov.uk/patterns/question-pages/):
 
-## The state catalogue
+- Every step makes sense on its own and does not overwhelm.
+- Ask only what is needed, and nothing the system already knows.
+- What is mandatory is clear; what is optional is marked.
+- Before the flow starts, say what documents or information the user will need.
 
-Every view a flow touches can be in more states than the one that was designed. Each state here is one the implementation has to model, or it does not exist in the build.
+## Check as you go
 
-| State | What the user needs to see |
-|---|---|
-| **Empty, first use** | What will appear here, and the one action that makes it appear |
-| **Empty, no results** | That the search or filter caused it, which filters are active, and how to loosen them |
-| **Loading** | That something is happening. For more than about a second, what is happening. Keep the layout stable so nothing jumps when data arrives |
-| **Partial** | Which part arrived and which did not, and that the rest is still usable. A list where three of forty rows failed to load is not an error page |
-| **Error, recoverable** | What went wrong in the user's terms, what to do, and that their input is still there |
-| **Error, system** | That it is not their fault, whether to retry or come back later, and where to get help. GOV.UK has patterns for [there is a problem with the service](https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/) and [page not found](https://design-system.service.gov.uk/patterns/page-not-found-pages/) |
-| **No permission** | That the thing exists, that they cannot act on it, and who can |
-| **Success** | That it worked, what changed, and what comes next. "Saved" answers whether the system wrote, not whether the user is done |
-
-Not every view has every state. Write down which ones apply and why the others cannot happen. "Cannot happen" is a claim the build will test.
-
-## Session continuity
-
-For flows that take longer than one sitting: what survives when the user leaves mid-flow, where they land on return, and how they see what is still open. GOV.UK's complete multiple tasks pattern is one answer for long applications. In a daily tool, the answer is usually that the list remembers its filter, sort and selection.
-
-## Decisions the brief forces
-
-A flow that lists requirements instead of deciding them hands the design work to the developers. Walk the brief once more and turn each of these into a decision with a reason, wherever it applies:
-
-| The brief says | The flow must decide |
-|---|---|
-| Daily routine | The keyboard path through the main loop, with the actual keys, and which actions work on several items at once |
-| A workaround exists (a spreadsheet, a colleague, a printout) | Where each piece of information the workaround holds now lives, and who keeps it current inside the flow. If the flow cannot replace it, say which part stays outside and why |
-| Several people work on the same data | What the system checks before it writes, what the second person sees, and what they can do then. "Last write wins" is a decision too, and usually the wrong one |
-| A legal or safety rule | Where the rule is shown before the user chooses, not only where it blocks after |
-| Interruptions | What is kept, for how long, and where the user picks up |
-| Access needs | What changes in the flow for them, for example what reflows at high zoom |
-
-Rules for deciding:
-
-- **One answer, not options.** "Either A or B is fine" leaves the choice to whoever builds it. Pick one and say why; name the other only if the evidence that would flip it is known.
-- **Numbers, not adjectives.** "Undo for 10 seconds", not "for a short time". If the number is a guess, say so.
-- **Every decision has a reason** taken from the brief. A decision without one is a preference.
+Walk the flow against a usability standard while designing it, not afterwards: [Nielsen's ten heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) or ISO 9241-110. Visibility of system status, user control, error prevention and recovery, recognition over recall: if the three moments are done well, these are already met. Where one is not, the step is not finished.
 
 ## What to write down
 
-The flow is read by developers and by whoever builds the screens. Write it for them, in this order:
+1. **Goal and aha.** What the user has at the end, and the one moment where it pays off.
+2. **The steps.** One row per step:
 
-1. The task in six lines (from the brief, or written and marked as above)
-2. The step table
-3. The decisions the brief forces
-4. The state catalogue per view
-5. The dead-end list, one way out each
-6. Open questions, each with who can answer it
+| Step | Why now (on the way to the goal) | Before | During | After | Acknowledgement |
+|---|---|---|---|---|---|
 
-Leave out how the flow was produced: no names of skills or process steps, no "next, run X". Leave out final wording (the text step), layout and visual design (the screen step), and metrics or test plans unless the brief asks for them. Next to the feature in the repo, or wherever the screen step will read it.
+   Describe actions on components ("takes a photo of the receipt"), never layouts. One line per cell.
+3. **Ways out.** No step ends without a way forward. One line per dead end with its way out (data missing, step skipped, the user leaves and comes back).
 
-## What this skill does not do
-
-It does not decide layout, look or final text. Layout belongs to the screen step, words to `ux-text`. It does not design the emotional arc of an onboarding; that is a separate job (`user-flow`, not in this collection). It does not review a finished flow; that is a review job (separate, not in this collection).
+Leave out final wording (`ux-text`), layout and visual design (the screen step), and how the flow was produced.
 
 ## Where it sits
 
-**`ux-flow`** → screen → `ux-text` → review
+**`ux-flow`** → `ux-text` → `ux-build-plan` → build → `ux-validate`
