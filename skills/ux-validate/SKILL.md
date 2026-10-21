@@ -10,17 +10,18 @@ Category: **Check**
 |  |  |
 |---|---|
 | **Use when** | A concept was translated by someone else (a developer, a coding agent) · a build is about to be released · the build and the concept seem to have drifted apart |
-| **Skip when** | The person who wrote the concept built it and the change is small · the concept itself needs judging, not its translation: a review (separate, not in this collection) |
+| **Skip when** | The person who wrote the concept built it and the change is small · nothing is planned or built yet: `ux-build-plan` · the concept itself needs judging, not its translation: a review (separate, not in this collection) |
 | **Needs** | The concept (`ux-flow`, `ux-text`) and what was made from it: a build plan (`ux-build-plan`) or a running build |
 | **Produces** | A comparison per concept step, a list of deviations each with who fixes it, and a verdict |
 | **Then** | Deviations go back to the build, or to the concept if the build found something the concept missed |
 
 ## Before you start
 
-Look for both sides: the concept, and the plan or build made from it.
+Look for both sides: the concept (from `ux-flow` and `ux-text`), and the plan or build made from it (from `ux-build-plan`).
 
 Found both: say in one line what you compare with what.
-One missing: say which. Without the concept there is nothing to validate against; without the build there is nothing to validate.
+One missing: say which and offer to run the skill that makes it. Without the concept there is nothing to validate against; without the build there is nothing to validate.
+Told to go ahead anyway with only a build: reconstruct the intended experience from the brief, mark it **(assumed)**, and validate against that.
 
 ## Validate against the concept, not against taste
 
@@ -44,6 +45,8 @@ Then the other direction: what is in the build that the concept does not ask for
 3. **Added by the build**: everything not in the concept.
 4. **Deviations**, ranked by how much they change the experience, each with who fixes it: the build (it drifted) or the concept (the build found a real gap).
 5. **Verdict** in two sentences: does the build deliver the concept, and what is the one thing to fix first.
+
+Leave out how the validation was produced: no skill names, no process notes.
 
 ## What this skill does not do
 

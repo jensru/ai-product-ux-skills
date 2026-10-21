@@ -32,7 +32,7 @@ description: What it does, then "Use when ..." with concrete situations.
 
 # Title
 
-Category: **Understand | Flow | Build | Check**
+Category: **Concept | Build | Check**
 
 |  |  |
 |---|---|
@@ -78,6 +78,7 @@ Rules that keep this from turning into an interrogation:
 - **One precondition, not three.** The one whose absence ruins the result, not everything that would be nice.
 - **Answerable by looking, never by asking.** Search the repo, the project, the conversation. Only speak when something is genuinely missing.
 - **Offer, never block.** A skill that refuses to work is worse than one that works on a stated assumption.
+- **The first skill in the chain has no skill to offer.** `ux-flow` writes its missing input (goal and trigger) itself and marks it as assumed.
 
 This exists because it was learned the expensive way: a skill was run eight times without the input its own `Needs` row named, and the results were measured, analysed and written up before anyone noticed the input was missing.
 

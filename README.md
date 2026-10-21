@@ -24,7 +24,7 @@ ux-flow  →  ux-text   →   ux-build-plan  →  build  →   ux-validate
 
 **Why three roles.** A concept that also tries to be a build briefing fills up with technical detail and loses the experience. A build with no concept to go back to fills the gaps with whatever is usual. The split keeps the concept clean, makes the translation a job of its own, and makes that job checkable.
 
-**Keep the roles apart.** Build plan and validation work only when they are done by someone who did not write what they work on: another person, or a fresh agent that gets only the concept, the text handover and the brief. In Claude Code that means a separate subagent for the build plan and another one for validation. An agent that validates its own build finds what it meant, not what it made.
+**Keep the roles apart.** Build plan and validation are meant to be done by someone who did not write what they work on: another person, or a fresh agent that gets only the concept, the text handover and the brief, and for validation also the plan or build. In Claude Code that means a separate subagent for the build plan and another one for validation. The tested runs worked this way; one agent doing all of it in one context is untested (see [evals](evals/README.md)).
 
 **When to skip build plan and validation.** They cost time. Skip them when the change is small and whoever builds it can go straight from the concept, when the person who wrote the concept also builds it, or for an early prototype meant to be thrown away. Use them when the concept goes to someone else, when it proposes an interaction nobody has built here before, or before a release.
 
@@ -71,6 +71,7 @@ for s in ai-product-ux-skills/skills/ux-*; do ln -s "$PWD/$s" ~/.claude/skills/;
 ```
 README.md             This file
 AGENTS.md             Conventions for writing and changing skills
+CLAUDE.md, .cursorrules   Pointers to AGENTS.md for Claude Code and Cursor
 LICENSE               CC BY 4.0
 evals/README.md       How the skills were tested, what the runs showed, what is still open
 skills/

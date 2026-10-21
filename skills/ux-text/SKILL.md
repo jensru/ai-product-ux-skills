@@ -5,7 +5,7 @@ description: Write or fix the functional text of an interface - labels, buttons,
 
 # UX Text
 
-Category: **Flow**
+Category: **Concept**
 
 |  |  |
 |---|---|
@@ -83,7 +83,7 @@ Developers replace texts by working down a table. Write it so they never have to
 
 | ID | Element and state | Today | New | Why |
 |---|---|---|---|---|
-| T01 | Search field, label | (placeholder "Suchen...") | Suche | Placeholder disappears on input |
+| T01 | Search field, label | (placeholder "Search...") | Search | Placeholder disappears on input |
 
 - Stable IDs (T for existing texts, N for new states the screen does not have yet).
 - Final strings only, with variables in braces (`{nr}`, `{name}`), never example values. Define each variable once.
@@ -92,7 +92,7 @@ Developers replace texts by working down a table. Write it so they never have to
 
 **5. Behaviour the text depends on.** Table: ID, problem today, what is needed, which text IDs depend on it. Text cannot fix a dialog in the wrong place or a field that clears itself; say so here, once, and keep it out of the replacement table.
 
-**6. Message patterns.** The sentence shapes every message follows ("{name} auf die Shortlist gesetzt." / "{name} wurde nicht auf die Shortlist gesetzt. Versuchen Sie es noch einmal."), the button verb pattern, and two or three don'ts.
+**6. Message patterns.** The sentence shapes every message follows ("{name} moved to the shortlist." / "{name} was not moved to the shortlist. Try again."), the button verb pattern, and two or three don'ts.
 
 Leave out how the handover was produced: no skill names, no process steps, no explanation of rules that did not apply.
 

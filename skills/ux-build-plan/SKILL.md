@@ -10,17 +10,18 @@ Category: **Build**
 |  |  |
 |---|---|
 | **Use when** | A concept from `ux-flow` (and usually `ux-text`) is ready to build · developers or a coding agent get a concept, not a briefing · the concept proposes an interaction nobody has built here before (image upload, AI suggestions, chat) |
-| **Skip when** | The change is small enough that whoever builds it can go straight from the concept · the concept is not settled yet: finish it in `ux-flow` first |
+| **Skip when** | The change is small enough that whoever builds it can go straight from the concept · the concept is not settled yet: finish it in `ux-flow` first · the build exists and needs checking against the concept: `ux-validate` |
 | **Needs** | The concept: goal, steps with before, during, after and acknowledgement (`ux-flow`), and the text handover (`ux-text`) if there is one |
 | **Produces** | A build plan that traces every item to a concept step, the technical decisions with one recommendation each, and a list of what goes back to the concept |
 | **Then** | Build. `ux-validate` if the build has to be checked against the concept |
 
 ## Before you start
 
-Look for the concept: the goal, the steps, and for each step what the user gets before, during and after.
+Look for the concept: the goal, the steps, and for each step what the user gets before, during and after. It usually comes from `ux-flow`, with text from `ux-text`.
 
 Found it: build on it and say in one line what you are building on.
-Not found, or only a feature list: say so. A build plan without a concept invents the experience, which is the concept's job.
+Not found, or only a feature list: say so and offer to run `ux-flow` first. A build plan without a concept invents the experience, which is the concept's job.
+Told to go ahead anyway: do, but write the assumed experience at the top of the plan, marked **(assumed)**.
 
 ## The concept owns the experience
 
@@ -41,6 +42,8 @@ The concept describes what the user lives through. It carries no technology on p
 3. **Technical decisions.** Each open choice (where data comes from, how a conflict is prevented, which service reads a receipt) with one recommendation and the reason.
 4. **Added by the plan.** Everything that is not in the concept, marked.
 5. **Back to the concept.** What cannot be built as described, why, and the alternative.
+
+Leave out how the plan was produced: no skill names, no process notes.
 
 ## What this skill does not do
 

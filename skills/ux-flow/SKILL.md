@@ -5,15 +5,15 @@ description: Design a flow as a guided path to the user's goal - every step acti
 
 # UX Flow
 
-Category: **Flow**
+Category: **Concept**
 
 |  |  |
 |---|---|
 | **Use when** | A task, form or feature needs its steps designed · users drop out and nobody can say where · the flow is a stack of form windows · every action answers with a toast or a dialog |
 | **Skip when** | The steps are right and only the wording is weak: `ux-text`. The flow exists and needs judging, not designing: a review (separate, not in this collection) |
-| **Needs** | The user's goal and what brings them here: a ticket, a brief, interview notes |
+| **Needs** | The user's goal and what brings them here: a ticket, a brief, interview notes (no skill in this collection produces them) |
 | **Produces** | The goal and its aha, a step table with why, before, during, after and acknowledgement per step, and the ways out |
-| **Then** | Build the screens (your own screen step), then `ux-text` |
+| **Then** | `ux-text`, then `ux-build-plan` when someone else builds it |
 
 ## Before you start
 
@@ -92,7 +92,7 @@ Walk the flow against a usability standard while designing it, not afterwards: [
    Describe actions on components ("takes a photo of the receipt"), never layouts. One line per cell.
 3. **Ways out.** No step ends without a way forward. One line per dead end with its way out (data missing, step skipped, the user leaves and comes back).
 
-Leave out final wording (`ux-text`), layout and visual design (the screen step), and how the flow was produced.
+Leave out final wording (`ux-text`), technical detail and layout (`ux-build-plan` and the build), and how the flow was produced.
 
 ## Where it sits
 
